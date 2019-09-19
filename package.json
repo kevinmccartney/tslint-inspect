@@ -1,0 +1,49 @@
+{
+  "name": "tslint-inspect",
+  "version": "0.0.1",
+  "description": "Easily figure out what rules are enabled in your TSlint configuration.",
+  "main": "dist/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "tsc && ./scripts/check-version.js",
+    "dev": "tsc --watch"
+  },
+  "bin": {
+    "tsli": "dist/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinmccartney/tslint-inspect.git"
+  },
+  "keywords": [
+    "tslint",
+    "linter",
+    "tooling",
+    "npm",
+    "js",
+    "typescript"
+  ],
+  "author": "Kevin McCartney <hello@kevinmccartney.is>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinmccartney/tslint-inspect/issues"
+  },
+  "homepage": "https://github.com/kevinmccartney/tslint-inspect#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.136",
+    "@types/resolve": "0.0.8",
+    "cli-columns": "^3.1.2",
+    "cliui": "^5.0.0",
+    "clui": "^0.3.6",
+    "commander": "^2.20.0",
+    "lodash": "^4.17.11",
+    "resolve": "^1.11.1",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.10"
+  },
+  "peerDependencies": {
+    "tslint": "^5.17.0"
+  }
+}

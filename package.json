@@ -1,12 +1,17 @@
 {
   "name": "tslint-inspect",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easily figure out what rules are enabled in your TSlint configuration.",
   "main": "dist/cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "tsc && ./scripts/check-version.js",
-    "dev": "tsc --watch"
+    "client:dev": "cd ./client && ng serve",
+    "client:build": "ng build -c ./client/angular.json --prod=true",
+    "client:build:tailwind": "tailwind build ./client/src/tailwind.css -c ./client/src/tailwind.config.js -o ./client/src/assets/tailwind.css",
+    "client:test": "ng test -c ./client/angular.json",
+    "cli:dev": "node --inspect -r ts-node/register ./cli/src/app",
+    "cli:test": "jest ./cli/src/**/* -c ./cli/jestrc",
+    "cli:build": "tsc -c ./cli/tsconfig.json",
+    "cli:run": "./cli/dist/app.ts"
   },
   "bin": {
     "tsli": "dist/cli.js"
@@ -30,20 +35,49 @@
   },
   "homepage": "https://github.com/kevinmccartney/tslint-inspect#readme",
   "dependencies": {
+    "@angular/animations": "~8.0.1",
+    "@angular/cdk": "^8.2.0",
+    "@angular/common": "~8.0.1",
+    "@angular/compiler": "~8.0.1",
+    "@angular/core": "~8.0.1",
+    "@angular/forms": "~8.0.1",
+    "@angular/material": "^8.2.0",
+    "@angular/platform-browser": "~8.0.1",
+    "@angular/platform-browser-dynamic": "~8.0.1",
+    "@angular/router": "~8.0.1",
     "@types/lodash": "^4.14.136",
     "@types/resolve": "0.0.8",
-    "cli-columns": "^3.1.2",
-    "cliui": "^5.0.0",
-    "clui": "^0.3.6",
     "commander": "^2.20.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "resolve": "^1.11.1",
-    "typescript": "^3.5.2"
+    "rxjs": "~6.4.0",
+    "tslib": "^1.9.0",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@types/node": "^12.0.10"
-  },
-  "peerDependencies": {
-    "tslint": "^5.17.0"
+    "@angular-builders/custom-webpack": "^8.2.0",
+    "@angular-devkit/build-angular": "~0.800.0",
+    "@angular/cli": "~8.0.3",
+    "@angular/compiler-cli": "~8.0.1",
+    "@angular/language-service": "~8.0.1",
+    "@types/jasmine": "~3.3.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.0.0",
+    "jasmine-core": "~3.4.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.1.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-scss": "^2.0.0",
+    "protractor": "~5.4.0",
+    "tailwindcss": "^1.1.2",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.15.0",
+    "typescript": "~3.4.2"
   }
 }

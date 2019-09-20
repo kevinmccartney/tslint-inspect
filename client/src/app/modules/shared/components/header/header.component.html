@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="flex flex-row justify-between">
+  <div class="flex flex-row justify-between container mx-auto">
+    <h2>Tslint Inspect</h2>
+  <button matButton
+    class="flex justify-center"
+    (click)="handleClick()"
+  >
+    <mat-icon>{{uiMode === 'light' ? 'brightness_high' : 'brightness_low' }}</mat-icon>
+  </button>
+  </div>
+</mat-toolbar>
+<nav mat-tab-nav-bar mat-stretch-tabs class="container mx-auto" color="primary" >
+  <a mat-tab-link> Rules </a>
+  <a mat-tab-link> Configs </a>
+  <a mat-tab-link> Coverage </a>
+</nav>

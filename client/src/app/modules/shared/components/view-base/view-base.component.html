@@ -1,0 +1,10 @@
+<section class="mat-app-background h-screen overflow-auto">
+  <tsli-header
+    [uiMode]="appStateService.uiMode$ | async"
+    (onUiModeToggle)="appStateService.uiMode$.next($event)"
+  >
+  </tsli-header>
+  <div class="container mx-auto">
+    <ng-content></ng-content>
+  </div>
+</section>

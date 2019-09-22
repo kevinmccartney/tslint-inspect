@@ -1,1 +1,1 @@
-declare module 'cliui';
+declare module "cliui";

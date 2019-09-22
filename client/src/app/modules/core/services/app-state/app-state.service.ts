@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class AppStateService {
-  uiMode$: BehaviorSubject<'light'|'dark'> = new BehaviorSubject('light');
+  uiMode$: BehaviorSubject<"light" | "dark"> = new BehaviorSubject("light");
 }

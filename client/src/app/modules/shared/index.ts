@@ -1,2 +1,2 @@
-export { TsliMatModule } from './material.module';
-export { SharedModule } from './shared.module';
+export { TsliMatModule } from "./material.module";
+export { SharedModule } from "./shared.module";

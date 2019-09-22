@@ -1,26 +1,22 @@
 import { Component, HostBinding, Input, OnDestroy } from "@angular/core";
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil } from "rxjs/operators";
 
-import { AppStateService } from 'src/app/modules/core/services/app-state';
-import { Subject } from 'rxjs';
+import { AppStateService } from "src/app/modules/core/services/app-state";
+import { Subject } from "rxjs";
 
 @Component({
-  selector: 'tsli-view-base',
-  templateUrl: './view-base.component.html'
+  selector: "tsli-view-base",
+  templateUrl: "./view-base.component.html"
 })
 export class ViewBaseComponent implements OnDestroy {
-  @HostBinding('class.dark') isDarkMode = true;
+  @HostBinding("class.dark") isDarkMode = true;
   private destroy$: Subject<void> = new Subject();
 
-  constructor(
-    public appStateService: AppStateService,
-  ) {
+  constructor(public appStateService: AppStateService) {
     this.appStateService.uiMode$
-      .pipe(
-        takeUntil(this.destroy$),
-      )
+      .pipe(takeUntil(this.destroy$))
       .subscribe((mode: string) => {
-        this.isDarkMode = mode === 'dark';
+        this.isDarkMode = mode === "dark";
       });
   }
 

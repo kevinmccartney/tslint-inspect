@@ -1,1 +1,1 @@
-export { ViewBaseComponent } from './view-base.component';
+export { ViewBaseComponent } from "./view-base.component";

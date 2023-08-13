@@ -46,6 +46,7 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
+    "@ngrx/router-store": "^8.3.0",
     "@types/lodash": "^4.14.136",
     "@types/resolve": "0.0.8",
     "commander": "^2.20.0",

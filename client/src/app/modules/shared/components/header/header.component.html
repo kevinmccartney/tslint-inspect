@@ -11,7 +11,7 @@
 <nav mat-tab-nav-bar mat-stretch-tabs class="container mx-auto" color="primary">
   <a
     mat-tab-link
-    [routerLink]="[link.route]"
+    (click)="handleNavigation(link.route)"
     *ngFor="let link of links"
     [active]="router.isActive(link.route)"
   >

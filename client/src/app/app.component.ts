@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './modules/shared/utilities/animations';
+import { RouterOutlet, Router, NavigationError } from '@angular/router';
+import { sliderAnimation } from './modules/shared/utilities/animations';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'tsli-client',
   templateUrl: './app.component.html',
-  animations: [
-    slideInAnimation,
-    // animation triggers go here
-  ],
+  animations: [sliderAnimation],
 })
 export class AppComponent {
-  prepareRoute(outlet: RouterOutlet) {
-    return (
-      outlet &&
-      outlet.activatedRouteData &&
-      outlet.activatedRouteData['animation']
-    );
+  getState(outlet: RouterOutlet) {
+    return outlet.activatedRouteData.name || '';
+  }
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter(x => x instanceof NavigationError))
+      .subscribe(x => this.router.navigateByUrl('/not-found'));
   }
 }

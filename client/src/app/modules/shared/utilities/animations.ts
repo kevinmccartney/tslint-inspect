@@ -1,48 +1,57 @@
 import {
-  trigger,
-  transition,
-  style,
-  query,
-  animateChild,
-  group,
   animate,
+  group,
+  query,
+  style,
+  transition,
+  trigger,
+  AnimationGroupMetadata,
+  sequence,
 } from '@angular/animations';
+import { isAbsolute } from 'path';
 
-export const slideInAnimation = trigger('routeAnimations', [
-  transition('HomePage <=> AboutPage', [
-    style({ position: 'relative' }),
-    query(':enter, :leave', [
-      style({
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-      }),
-    ]),
-    query(':enter', [style({ left: '-100%' })]),
-    query(':leave', animateChild()),
-    group([
-      query(':leave', [animate('300ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
-    ]),
-    query(':enter', animateChild()),
-  ]),
-  transition('* <=> FilterPage', [
-    style({ position: 'relative' }),
-    query(':enter, :leave', [
-      style({
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-      }),
-    ]),
-    query(':enter', [style({ left: '-100%' })]),
-    query(':leave', animateChild()),
-    group([
-      query(':leave', [animate('200ms ease-out', style({ left: '100%' }))]),
-      query(':enter', [animate('300ms ease-out', style({ left: '0%' }))]),
-    ]),
-    query(':enter', animateChild()),
-  ]),
+export const sliderAnimation = trigger('activeRouteIndex', [
+  transition('* <=> *', slideTo('left')),
+  // transition(':decrement', slideTo('right')),
 ]);
+
+function slideTo(direction): AnimationGroupMetadata {
+  const optional = { optional: true };
+  console.log('slideTo called');
+
+  return group([
+    // slide existing page from 0% to -100% to the left
+    query(
+      ':leave',
+      sequence([
+        animate(
+          '500ms ease',
+          style({
+            transform: 'translateX(-100%)',
+          }),
+        ),
+      ]),
+
+      optional,
+    ),
+    // slide new page from 100% to 0% to the left
+    query(
+      ':enter',
+      sequence([
+        style({
+          transform: 'translateX(100%)',
+          position: 'absolute',
+          right: 0,
+        }),
+        animate(
+          '500ms ease',
+          style({
+            transform: 'translateX(0%)',
+            position: 'relative',
+          }),
+        ),
+      ]),
+      optional,
+    ),
+  ]);
+}

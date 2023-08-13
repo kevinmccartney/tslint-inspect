@@ -1,5 +1,5 @@
 <tsli-view-base>
-  <div [@routeAnimations]="prepareRoute(outlet)">
+  <div [@activeRouteIndex]="getState(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </tsli-view-base>
